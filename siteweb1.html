@@ -3,584 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Voir Ce Soir | Site Web</title>
+    <title>À Voir Ce Soir | Site Web </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     </head>
-    <style>
-        :root {
-            --cream: #000000;
-            --soft-beige: #2e0030;
-            --warm-taupe: #e5e6da;
-            --sage: #fdfcfc;
-            --deep-sage: #ffffff;
-            --charcoal: #fefff8;
-            --gold-accent: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-beige) 100%);
-            color: var(--charcoal);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(16, 1, 15, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            animation: slideDown 0.8s ease-out;
-        }
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--deep-sage);
-            letter-spacing: 2px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 3rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 400;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold-accent);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--deep-sage);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Sections communes */
-        section {
-            min-height: 100vh;
-            padding: 120px 5% 80px;
-            display: none;
-        }
-
-        section.active {
-            display: block;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Page d'accueil */
-        #accueil {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        #accueil::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(168, 180, 165, 0.15) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        #accueil::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            bottom: -150px;
-            left: -150px;
-            animation: float 15s ease-in-out infinite reverse;
-        }
-         @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(30px, 30px) scale(1.1);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            font-weight: 300;
-            color: var(--deep-sage);
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            color: var(--warm-taupe);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: var(--deep-sage);
-            color: var(--cream);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(122, 139, 126, 0.3);
-            animation: fadeInUp 1s ease-out 0.9s both;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(122, 139, 126, 0.4);
-            background: var(--sage);
-        }
-
-        /* Page Recommandations */
-        #recommandations .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        .section-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--deep-sage);
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--warm-taupe);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .recommendations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .recommendation-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(14px);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(168, 180, 165, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .recommendation-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--sage), var(--gold-accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .recommendation-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .recommendation-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        .recommendation-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--deep-sage);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .recommendation-card p {
-            color: var(--charcoal);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .recommendation-tag {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: var(--soft-beige);
-            color: var(--deep-sage);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        .recommendation-card {
-  position: relative;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.3); /* glass effect */
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 3rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
-  border: 1px solid rgba(168, 180, 165, 0.2);
-
-  background-size: cover;
-  background-position: center;
-}
-
-/* Images spécifiques */
-.theshining {
-  background-image: url('images.jpeg');
-}
-.madmax {
-    background-image: url('ab67616d0000b273f61752303ab3820bb7fec69e.jpeg');
-}
-.memento {
-    background-image: url('téléchargement.jpeg');
-}
-.casablanca {
-    background-image: url('téléchargement (1).jpeg');
-}
-.full {
-    background-image: url('MV5BYWUzNzZkNzUtNDdiYy00Nzk5LTgxMmItNTk0MjRjNjdjNDA0XkEyXkFqcGc@._V1_.jpg');
-}
-.whiplash {
-    background-image: url('1_HygtAUSg3MqQjimu0MQy3Q.jpg');
-}
-
-/* Overlay sombre pour lisibilité */
-.recommendation-card::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
-  border-radius: 20px;
-}
-
-.recommendation-card h3,
-.recommendation-card p,
-.recommendation-card span {
-  position: relative;
-  z-index: 2;
-  color: white; /* texte lisible sur l'image */
-}
-
-        /* Page Avis */
-        .testimonials-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .testimonial {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 3.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            border-left: 4px solid var(--gold-accent);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        .testimonial-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--charcoal);
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .testimonial-quote::before {
-            content: '"';
-            position: absolute;
-            left: -30px;
-            top: -20px;
-            font-size: 5rem;
-            color: var(--sage);
-            opacity: 0.3;
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--sage), var(--deep-sage));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .author-info h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--deep-sage);
-            margin-bottom: 0.3rem;
-        }
-
-        .author-info p {
-            color: var(--warm-taupe);
-            font-size: 0.9rem;
-        }
-
-        .stars {
-            color: var(--gold-accent);
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 4rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .form-group label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: var(--deep-sage);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1.2rem;
-            border: 2px solid var(--soft-beige);
-            border-radius: 15px;
-            background: rgba(250, 247, 242, 0.8);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: var(--charcoal);
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--sage);
-            background: white;
-            box-shadow: 0 5px 20px rgba(168, 180, 165, 0.15);
-        }
-
-        .form-group textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            padding: 1.3rem 3rem;
-            background: var(--deep-sage);
-            color: var(--cream);
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(122, 139, 126, 0.3);
-            align-self: center;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(122, 139, 126, 0.4);
-            background: var(--sage);
-        }
-        .contact-info {
-            margin-top: 3rem;
-            text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid var(--soft-beige);
-        }
-
-        .contact-info p {
-            color: var(--warm-taupe);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--soft-beige);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--deep-sage);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-        }
-
-        .social-links a:hover {
-            background: var(--sage);
-            color: white;
-            transform: translateY(-5px);
-        }
-         footer {
-            background: var(--charcoal);
-            color: var(--soft-beige);
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-    </style>
+    
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">À Voir Ce Soir</div>
-            <ul>
-                <li><a href="#" onclick="showSection('accueil')">Accueil</a></li>
-                <li><a href="#" onclick="showSection('recommandations')">Recommandations</a></li>
-                <li><a href="#" onclick="showSection('avis')">Avis</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
-            </ul>
+    <body>
+    <header id="main-header">
+        <nav>
+            <div class="container">
+                <div class="logo">À Voir Ce Soir</div>
+                <ul>
+                    <li><a href="#" onclick="showSection('accueil')">Accueil</a></li>
+                    <li><a href="#" onclick="showSection('recommandations')">Recommandations</a></li>
+                    <li><a href="#" onclick="showSection('avis')">Avis</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header-center-content">
+            <img src="recette-pop-corn-sucre-comme-au-cinema1.jpg" alt="Ma Photo" class="profile-pic">
         </div>
-    </nav>
+        </nav>
+    </header>
      <!-- Section Accueil -->
     <section id="accueil" class="active">
         <div class="hero-content">
@@ -632,6 +79,66 @@
                 </div>
             </div>
         </div>
+        <div class="stats-container" style="margin-top: 5rem;">
+    <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--deep-sage);">
+        Récapitulatif Technique
+    </h3>
+    <table class="movie-table">
+        <thead>
+            <tr>
+                <th>Titre du Film</th>
+                <th>Réalisateur</th>
+                <th>Année</th>
+                <th>Genre</th>
+                <th>Note Globale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>The Shining</td>
+                <td>Stanley Kubrick</td>
+                <td>1980</td>
+                <td>Horreur</td>
+                <td>★★★★★</td>
+            </tr>
+            <tr>
+                <td>Casablanca</td>
+                <td>Michael Curtiz</td>
+                <td>1942</td>
+                <td>Romance</td>
+                <td>★★★★☆</td>
+            </tr>
+            <tr>
+                <td>Mad Max: Fury Road</td>
+                <td>George Miller</td>
+                <td>2015</td>
+                <td>Action</td>
+                <td>★★★★★</td>
+            </tr>
+            <tr>
+                <td>Whiplash</td>
+                <td>Damien Chazelle</td>
+                <td>2014</td>
+                <td>Drame / Musique</td>
+                <td>★★★★☆</td>
+            </tr>
+            <tr>
+                <td>Full Metal Jacket</td>
+                <td>Stanley Kubrick</td>
+                <td>1987</td>
+                <td>Guerre</td>
+                <td>★★★★☆</td>
+            </tr>
+            <tr>
+                <td>Memento</td>
+                <td>Christopher Nolan</td>
+                <td>2000</td>
+                <td>Mystère</td>
+                <td>★★★★☆</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     </section>
     <!-- Section Avis -->
     <section id="avis">
@@ -803,7 +310,17 @@
             });
         });
     </script>
+    <div class="github-qr-container">
+    <a href="https://github.com/douaawassmini/douaawassmini" target="_blank">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/douaawassmini/douaawassmini" alt="Mon GitHub QR Code" class="qr-code">
+    </a>
+    <span class="qr-label">Mon GitHub</span>
+</div>
+<div class="fixed-action-buttons">
+    <a href="#" class="action-btn scroll-top" title="Retour en haut">
+        ↑
+    </a>
+</div>
 </body>
 </html>
-
    
